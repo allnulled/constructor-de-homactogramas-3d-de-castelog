@@ -1,0 +1,13 @@
+{
+  "name": "constructor-de-homactogramas-3d-de-castelog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "cp -R src/www/* docs && mv docs/index.1.html docs/index.html",
+    "test": "npx http-server -c-1 src/www -o index.1.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
