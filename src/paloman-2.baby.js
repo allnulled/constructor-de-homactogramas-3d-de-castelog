@@ -1,34 +1,39 @@
 const Persona = class {
-    constructor(opciones, escena, camara, luz) {
+    constructor(posicion, opciones, escena, camara, luz) {
         this.escena = escena;
         this.camara = camara;
         this.luz = luz;
         this.opciones = opciones;
         this.utilidades = Object.assign({}, this.constructor.utilidades_por_defecto);
-        this.configuraciones = Object.assign({}, this.constructor.configuraciones_por_defecto, this.opciones.configuraciones || {})
-        this.locales = Object.assign({}, this.constructor.locales_por_defecto, this.opciones.locales || {})
+        this.configuraciones = Object.assign({}, this.constructor.configuraciones_por_defecto, this.opciones.configuraciones || {});
+        this.locales = Object.assign({}, this.constructor.locales_por_defecto, this.opciones.locales || {});
+        this.posicion = Object.assign({}, posicion);
+        Object.assign(this.configuraciones, this.posicion);
         this.moverse();
     }
     static get configuraciones_por_defecto() {
-        const temporalmente = {};
-        Object.assign(temporalmente, {
+        const configuralmente = {};
+        Object.assign(configuralmente, {
             ancho_de_espalda: 0.5
         });
-        Object.assign(temporalmente, {
+        Object.assign(configuralmente, {
+            x: 0,
+            y: 0,
+            z: 0,
             anchura: 0.8,
-            ancho_de_cabeza: temporalmente.ancho_de_espalda / 4 * 3,
+            ancho_de_cabeza: configuralmente.ancho_de_espalda / 4 * 3,
             ancho_de_bolas: 0.08,
             ancho_de_palos: 0.02,
-            ancho_de_cadera: (temporalmente.ancho_de_espalda / 4 * 3) / 2,
+            ancho_de_cadera: (configuralmente.ancho_de_espalda / 4 * 3) / 2,
             largo_de_cuello: 0.3,
-            largo_de_espalda: temporalmente.ancho_de_espalda,
+            largo_de_espalda: configuralmente.ancho_de_espalda,
             largo_de_columna: 0.7,
             largo_de_antebrazo: 0.5,
             largo_de_brazo: 0.4,
             largo_de_antepierna: 0.7,
             largo_de_pierna: 0.6,
         });
-        return temporalmente;
+        return configuralmente;
     }
     static get locales_por_defecto() {
         return {};
@@ -92,9 +97,9 @@ const Persona = class {
                 segments: 32
             }, escena);
             Object.assign(esfera_de_cabeza.position, {
-                x: 0,
-                y: configuralmente.altura_de_cabeza,
-                z: 0
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + configuralmente.altura_de_cabeza,
+                z: (configuralmente.z) + 0
             });
             Object.assign(esfera_de_cabeza, {
                 material: utilmente.fabricar_material_de_color("#CCCCCC", "material_de_cabeza")
@@ -115,9 +120,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(esfera_de_cerebro.position, {
-                x: 0,
-                y: configuralmente.altura_de_cabeza,
-                z: 0
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + configuralmente.altura_de_cabeza,
+                z: (configuralmente.z) + 0
             });
             Object.assign(esfera_de_cerebro, {
                 material: utilmente.fabricar_material_de_color("#FFFF33", "material_de_esfera_de_cerebro")
@@ -135,9 +140,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(cilindro_de_cuello.position, {
-                x: 0,
-                y: configuralmente.altura_de_cabeza - (configuralmente.largo_de_cuello / 2),
-                z: 0
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + configuralmente.altura_de_cabeza - (configuralmente.largo_de_cuello / 2),
+                z: (configuralmente.z) + 0
             });
             Object.assign(cilindro_de_cuello, {
                 material: utilmente.fabricar_material_de_color("#333333", "material_de_cilindro_de_cuello")
@@ -155,9 +160,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(esfera_de_cuello.position, {
-                x: 0,
-                y: localmente.cilindro_de_cuello.position.y - (configuralmente.largo_de_cuello / 2),
-                z: 0
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.cilindro_de_cuello.position.y - (configuralmente.largo_de_cuello / 2),
+                z: (configuralmente.z) + 0
             });
             Object.assign(esfera_de_cuello, {
                 material: utilmente.fabricar_material_de_color("#CCCCCC", "material_de_esfera_de_cuello")
@@ -178,9 +183,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(cilindro_de_espalda.position, {
-                x: 0,
-                y: localmente.esfera_de_cuello.position.y,
-                z: 0
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.esfera_de_cuello.position.y,
+                z: (configuralmente.z) + 0
             });
             Object.assign(cilindro_de_espalda, {
                 material: utilmente.fabricar_material_de_color("#333333", "material_de_cilindro_de_espalda")
@@ -199,9 +204,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(esfera_de_hombro_izquierdo.position, {
-                x: 0,
-                y: localmente.esfera_de_cuello.position.y,
-                z: -(configuralmente.largo_de_espalda / 2)
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.esfera_de_cuello.position.y,
+                z: (configuralmente.z) - (configuralmente.largo_de_espalda / 2)
             });
             Object.assign(esfera_de_hombro_izquierdo, {
                 material: utilmente.fabricar_material_de_color("#CCCCCC", "material_de_esfera_de_hombro_izquierdo")
@@ -222,9 +227,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(esfera_de_hombro_derecho.position, {
-                x: 0,
-                y: localmente.esfera_de_cuello.position.y,
-                z: +(configuralmente.largo_de_espalda / 2)
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.esfera_de_cuello.position.y,
+                z: (configuralmente.z) + (configuralmente.largo_de_espalda / 2)
             });
             Object.assign(esfera_de_hombro_derecho, {
                 material: utilmente.fabricar_material_de_color("#CCCCCC", "material_de_esfera_de_hombro_derecho")
@@ -245,9 +250,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(cilindro_de_antebrazo_izquierdo.position, {
-                x: 0,
-                y: localmente.esfera_de_hombro_izquierdo.position.y - (configuralmente.largo_de_antebrazo / 2),
-                z: localmente.esfera_de_hombro_izquierdo.position.z
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.esfera_de_hombro_izquierdo.position.y - (configuralmente.largo_de_antebrazo / 2),
+                z: (configuralmente.z) - (configuralmente.largo_de_espalda / 2)
             });
             Object.assign(cilindro_de_antebrazo_izquierdo, {
                 material: utilmente.fabricar_material_de_color("#333333", "material_de_cilindro_de_antebrazo_izquierdo")
@@ -265,9 +270,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(cilindro_de_antebrazo_derecho.position, {
-                x: 0,
-                y: localmente.esfera_de_hombro_derecho.position.y - (configuralmente.largo_de_antebrazo / 2),
-                z: localmente.esfera_de_hombro_derecho.position.z
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.esfera_de_hombro_derecho.position.y - (configuralmente.largo_de_antebrazo / 2),
+                z: (configuralmente.z) + (configuralmente.largo_de_espalda / 2)
             });
             Object.assign(cilindro_de_antebrazo_derecho, {
                 material: utilmente.fabricar_material_de_color("#333333", "material_de_cilindro_de_antebrazo_derecho")
@@ -285,9 +290,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(esfera_de_codo_izquierdo.position, {
-                x: 0,
-                y: localmente.cilindro_de_antebrazo_izquierdo.position.y - (configuralmente.largo_de_antebrazo / 2),
-                z: localmente.esfera_de_hombro_izquierdo.position.z
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.cilindro_de_antebrazo_izquierdo.position.y - (configuralmente.largo_de_antebrazo / 2),
+                z: (configuralmente.z) - (configuralmente.largo_de_espalda / 2)
             });
             Object.assign(esfera_de_codo_izquierdo, {
                 material: utilmente.fabricar_material_de_color("#CCCCCC", "material_de_esfera_de_codo_izquierdo")
@@ -308,9 +313,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(esfera_de_codo_derecho.position, {
-                x: 0,
-                y: localmente.cilindro_de_antebrazo_derecho.position.y - (configuralmente.largo_de_antebrazo / 2),
-                z: localmente.esfera_de_hombro_derecho.position.z
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.cilindro_de_antebrazo_derecho.position.y - (configuralmente.largo_de_antebrazo / 2),
+                z: (configuralmente.z) + (configuralmente.largo_de_espalda / 2)
             });
             Object.assign(esfera_de_codo_derecho, {
                 material: utilmente.fabricar_material_de_color("#CCCCCC", "material_de_esfera_de_codo_derecho")
@@ -331,9 +336,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(cilindro_de_brazo_izquierdo.position, {
-                x: 0,
-                y: localmente.esfera_de_codo_izquierdo.position.y - (configuralmente.largo_de_brazo / 2),
-                z: localmente.esfera_de_hombro_izquierdo.position.z
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.esfera_de_codo_izquierdo.position.y - (configuralmente.largo_de_brazo / 2),
+                z: (configuralmente.z) - (configuralmente.largo_de_espalda / 2)
             });
             Object.assign(cilindro_de_brazo_izquierdo, {
                 material: utilmente.fabricar_material_de_color("#333333", "material_de_cilindro_de_brazo_izquierdo")
@@ -351,9 +356,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(cilindro_de_brazo_derecho.position, {
-                x: 0,
-                y: localmente.esfera_de_codo_derecho.position.y - (configuralmente.largo_de_brazo / 2),
-                z: localmente.esfera_de_hombro_derecho.position.z
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.esfera_de_codo_derecho.position.y - (configuralmente.largo_de_brazo / 2),
+                z: (configuralmente.z) + (configuralmente.largo_de_espalda / 2)
             });
             Object.assign(cilindro_de_brazo_derecho, {
                 material: utilmente.fabricar_material_de_color("#333333", "material_de_cilindro_de_brazo_derecho")
@@ -362,27 +367,27 @@ const Persona = class {
                 cilindro_de_brazo_derecho
             });
         }
-        Crear_esfera_de_mano_derecha: {
-            const esfera_de_mano_derecha = BABYLON.MeshBuilder.CreateSphere("esfera_de_mano_derecha", {
+        Crear_esfera_de_mano_izquierda: {
+            const esfera_de_mano_izquierda = BABYLON.MeshBuilder.CreateSphere("esfera_de_mano_izquierda", {
                 diameter: configuralmente.ancho_de_bolas,
                 segments: 32,
                 width: 0.4,
                 height: 0.1,
                 depth: 0.2,
             }, escena);
-            Object.assign(esfera_de_mano_derecha.position, {
-                x: 0,
-                y: localmente.cilindro_de_brazo_derecho.position.y - (configuralmente.largo_de_brazo / 2),
-                z: localmente.esfera_de_hombro_izquierdo.position.z
+            Object.assign(esfera_de_mano_izquierda.position, {
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.cilindro_de_brazo_derecho.position.y - (configuralmente.largo_de_brazo / 2),
+                z: (configuralmente.z) - (configuralmente.largo_de_espalda / 2)
             });
-            Object.assign(esfera_de_mano_derecha, {
-                material: utilmente.fabricar_material_de_color("#CCCCCC", "material_de_esfera_de_mano_derecha")
+            Object.assign(esfera_de_mano_izquierda, {
+                material: utilmente.fabricar_material_de_color("#CCCCCC", "material_de_esfera_de_mano_izquierda")
             });
             Object.assign(localmente, {
-                esfera_de_mano_derecha
+                esfera_de_mano_izquierda
             });
             Hacer_esfera_espejo: {
-                esfera_de_mano_derecha.material = utilmente.fabricar_material_traslucido_de_color_2("#FFFFFF", "#FFFFFF", "material_de_mano_derecha");
+                esfera_de_mano_izquierda.material = utilmente.fabricar_material_traslucido_de_color_2("#FFFFFF", "#FFFFFF", "material_de_mano_derecha");
             }
         }
         Crear_esfera_de_mano_derecha: {
@@ -394,9 +399,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(esfera_de_mano_derecha.position, {
-                x: 0,
-                y: localmente.cilindro_de_brazo_derecho.position.y - (configuralmente.largo_de_brazo / 2),
-                z: localmente.esfera_de_hombro_derecho.position.z
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.cilindro_de_brazo_derecho.position.y - (configuralmente.largo_de_brazo / 2),
+                z: (configuralmente.z) + (configuralmente.largo_de_espalda / 2)
             });
             Object.assign(esfera_de_mano_derecha, {
                 material: utilmente.fabricar_material_de_color("#CCCCCC", "material_de_esfera_de_mano_derecha")
@@ -417,9 +422,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(cilindro_de_columna.position, {
-                x: 0,
-                y: localmente.esfera_de_cuello.position.y - (configuralmente.largo_de_columna / 2),
-                z: 0
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.esfera_de_cuello.position.y - (configuralmente.largo_de_columna / 2),
+                z: (configuralmente.z) + 0
             });
             Object.assign(cilindro_de_columna, {
                 material: utilmente.fabricar_material_de_color("#333333", "material_de_cilindro_de_columna")
@@ -437,9 +442,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(esfera_de_cadera_central.position, {
-                x: 0,
-                y: localmente.cilindro_de_columna.position.y - (configuralmente.largo_de_columna / 2),
-                z: 0
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.cilindro_de_columna.position.y - (configuralmente.largo_de_columna / 2),
+                z: (configuralmente.z) + 0
             });
             Object.assign(esfera_de_cadera_central, {
                 material: utilmente.fabricar_material_de_color("#CCCCCC", "material_de_esfera_de_cadera_central")
@@ -460,9 +465,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(cilindro_de_cadera.position, {
-                x: 0,
-                y: localmente.cilindro_de_columna.position.y - (configuralmente.largo_de_columna / 2),
-                z: 0
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.cilindro_de_columna.position.y - (configuralmente.largo_de_columna / 2),
+                z: (configuralmente.z) + 0
             });
             Object.assign(cilindro_de_cadera, {
                 material: utilmente.fabricar_material_de_color("#333333", "material_de_cilindro_de_cadera")
@@ -481,9 +486,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(esfera_de_cadera_izquierda.position, {
-                x: 0,
-                y: localmente.cilindro_de_cadera.position.y,
-                z: configuralmente.ancho_de_cadera
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.cilindro_de_cadera.position.y,
+                z: (configuralmente.z) + configuralmente.ancho_de_cadera
             });
             Object.assign(esfera_de_cadera_izquierda, {
                 material: utilmente.fabricar_material_de_color("#CCCCCC", "material_de_esfera_de_cadera_izquierda")
@@ -504,9 +509,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(esfera_de_cadera_derecha.position, {
-                x: 0,
-                y: localmente.cilindro_de_cadera.position.y,
-                z: -configuralmente.ancho_de_cadera
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.cilindro_de_cadera.position.y,
+                z: (configuralmente.z) - configuralmente.ancho_de_cadera
             });
             Object.assign(esfera_de_cadera_derecha, {
                 material: utilmente.fabricar_material_de_color("#CCCCCC", "material_de_esfera_de_cadera_derecha")
@@ -527,9 +532,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(cilindro_de_antepierna_izquierda.position, {
-                x: 0,
-                y: localmente.esfera_de_cadera_izquierda.position.y - (configuralmente.largo_de_antepierna / 2),
-                z: -configuralmente.ancho_de_cadera
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.esfera_de_cadera_izquierda.position.y - (configuralmente.largo_de_antepierna / 2),
+                z: (configuralmente.z) - configuralmente.ancho_de_cadera
             });
             Object.assign(cilindro_de_antepierna_izquierda, {
                 material: utilmente.fabricar_material_de_color("#333333", "material_de_cilindro_de_antepierna_izquierda")
@@ -547,9 +552,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(cilindro_de_antepierna_derecha.position, {
-                x: 0,
-                y: localmente.esfera_de_cadera_derecha.position.y - (configuralmente.largo_de_antepierna / 2),
-                z: +configuralmente.ancho_de_cadera
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.esfera_de_cadera_derecha.position.y - (configuralmente.largo_de_antepierna / 2),
+                z: (configuralmente.z) + configuralmente.ancho_de_cadera
             });
             Object.assign(cilindro_de_antepierna_derecha, {
                 material: utilmente.fabricar_material_de_color("#333333", "material_de_cilindro_de_antepierna_derecha")
@@ -567,9 +572,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(esfera_de_rodilla_izquierda.position, {
-                x: 0,
-                y: localmente.cilindro_de_antepierna_derecha.position.y - (configuralmente.largo_de_antepierna / 2),
-                z: +configuralmente.ancho_de_cadera
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.cilindro_de_antepierna_derecha.position.y - (configuralmente.largo_de_antepierna / 2),
+                z: (configuralmente.z) + configuralmente.ancho_de_cadera
             });
             Object.assign(esfera_de_rodilla_izquierda, {
                 material: utilmente.fabricar_material_de_color("#CCCCCC", "material_de_esfera_de_rodilla_izquierda")
@@ -590,9 +595,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(esfera_de_rodilla_derecha.position, {
-                x: 0,
-                y: localmente.cilindro_de_antepierna_derecha.position.y - (configuralmente.largo_de_antepierna / 2),
-                z: -configuralmente.ancho_de_cadera
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.cilindro_de_antepierna_derecha.position.y - (configuralmente.largo_de_antepierna / 2),
+                z: (configuralmente.z) - configuralmente.ancho_de_cadera
             });
             Object.assign(esfera_de_rodilla_derecha, {
                 material: utilmente.fabricar_material_de_color("#CCCCCC", "material_de_esfera_de_rodilla_derecha")
@@ -613,9 +618,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(cilindro_de_pierna_izquierda.position, {
-                x: 0,
-                y: localmente.esfera_de_rodilla_izquierda.position.y - (configuralmente.largo_de_pierna / 2),
-                z: -configuralmente.ancho_de_cadera
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.esfera_de_rodilla_izquierda.position.y - (configuralmente.largo_de_pierna / 2),
+                z: (configuralmente.z) - configuralmente.ancho_de_cadera
             });
             Object.assign(cilindro_de_pierna_izquierda, {
                 material: utilmente.fabricar_material_de_color("#333333", "material_de_cilindro_de_pierna_izquierda")
@@ -633,9 +638,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(cilindro_de_pierna_derecha.position, {
-                x: 0,
-                y: localmente.esfera_de_rodilla_derecha.position.y - (configuralmente.largo_de_pierna / 2),
-                z: +configuralmente.ancho_de_cadera
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.esfera_de_rodilla_derecha.position.y - (configuralmente.largo_de_pierna / 2),
+                z: (configuralmente.z) + configuralmente.ancho_de_cadera
             });
             Object.assign(cilindro_de_pierna_derecha, {
                 material: utilmente.fabricar_material_de_color("#333333", "material_de_cilindro_de_pierna_derecha")
@@ -653,9 +658,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(esfera_de_pie_izquierdo.position, {
-                x: 0,
-                y: localmente.cilindro_de_pierna_izquierda.position.y - (configuralmente.largo_de_pierna / 2),
-                z: +configuralmente.ancho_de_cadera
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.cilindro_de_pierna_izquierda.position.y - (configuralmente.largo_de_pierna / 2),
+                z: (configuralmente.z) + configuralmente.ancho_de_cadera
             });
             Object.assign(esfera_de_pie_izquierdo, {
                 material: utilmente.fabricar_material_de_color("#CCCCCC", "material_de_esfera_de_pie_izquierdo")
@@ -676,9 +681,9 @@ const Persona = class {
                 depth: 0.2,
             }, escena);
             Object.assign(esfera_de_pie_derecho.position, {
-                x: 0,
-                y: localmente.cilindro_de_pierna_derecha.position.y - (configuralmente.largo_de_pierna / 2),
-                z: -configuralmente.ancho_de_cadera
+                x: (configuralmente.x) + 0,
+                y: (configuralmente.y) + localmente.cilindro_de_pierna_derecha.position.y - (configuralmente.largo_de_pierna / 2),
+                z: (configuralmente.z) - configuralmente.ancho_de_cadera
             });
             Object.assign(esfera_de_pie_derecho, {
                 material: utilmente.fabricar_material_de_color("#CCCCCC", "material_de_esfera_de_pie_derecho")
@@ -690,7 +695,10 @@ const Persona = class {
                 esfera_de_pie_derecho.material = utilmente.fabricar_material_traslucido_de_color_2("#FFFFFF", "#FFFFFF", "material_de_pie_derecho");
             }
         }
-        Object.assign(this, { locales: localmente, configuraciones: configuralmente });
+        Object.assign(this, {
+            locales: localmente,
+            configuraciones: configuralmente
+        });
     }
 };
 
@@ -734,11 +742,16 @@ const createScene = function () {
         Object.assign(escenicamente, { suelo });
     }
     Crear_personas: {
-        persona = new Persona({}, escena, camara, luz);
-        persona2 = new Persona({}, escena, camara, luz);
-        persona3 = new Persona({}, escena, camara, luz);
-        persona4 = new Persona({}, escena, camara, luz);
+        persona = new Persona({}, {}, escena, camara, luz);
+        persona2 = new Persona({z:1}, {}, escena, camara, luz);
+        persona3 = new Persona({z:2}, {}, escena, camara, luz);
+        persona4 = new Persona({z:3}, {}, escena, camara, luz);
         Object.assign(escenicamente, { persona, persona2, persona3, persona4 });
+        console.log(persona.locales.esfera_de_cabeza.position.z)
+        console.log(persona2.locales.esfera_de_cabeza.position.z)
+        console.log("?", persona2.locales.esfera_de_codo_derecho.position.z)
+        console.log(persona3.locales.esfera_de_cabeza.position.z)
+        console.log(persona4.locales.esfera_de_cabeza.position.z)
     }
     Configuraciones_finales: {
         Configuraciones_de_camara: {

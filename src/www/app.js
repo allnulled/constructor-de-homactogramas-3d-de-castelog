@@ -59845,13 +59845,13 @@ Castelog.variables.operador.exclamacion.ejs.ui.dom.elemento = function(elemento 
 const PaginaDeInicio = Castelog.metodos.un_componente_vue2("PaginaDeInicio",
   "<div class=\"PaginaDeInicio Component\">"
  + "    <h3>Constructor de homactogramas 3D de Castelog</h3>"
- + "    <p>Este proyecto está en progreso:</p>"
+ + "    <p>Este proyecto está en progreso, y todas estas versiones son temporales y ninguna válida todavía:</p>"
  + "    <ul>"
  + "        <li>"
- + "            <a href=\"./paloman-1/index.html\">Versión 1. Paloman estático</a>. Este Paloman todavía no se mueve. Pero tiene la forma y consistencia espacial adecuada para proceder a la siguiente versión."
+ + "            <a href=\"./paloman-1/index.html\">Versión 1. Paloman estático</a>. <b>Obsoleta</b>. Este Paloman todavía no se mueve. Pero tiene la forma y consistencia espacial adecuada para proceder a la siguiente versión."
  + "        </li>"
  + "        <li>"
- + "            <a href=\"./paloman-2/index.html\">Versión 2. Paloman estático con API propia</a>. Este Paloman tiene ya una clase `Persona` propia. Todavía no se mueve tampoco. Pero ahora podemos crear 2 y 3 personas fácilmente."
+ + "            <a href=\"./paloman-2/index.html\">Versión 2. Paloman estático con API propia</a>. Este Paloman tiene ya una clase `Persona` propia. Todavía no se mueve tampoco. Pero ahora podemos crear 2 y 3 personas fácilmente. Esta API sí tiene consistencia espacial."
  + "        </li>"
  + "    </ul>"
  + "  </div>",
