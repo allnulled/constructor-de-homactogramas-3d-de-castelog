@@ -20,7 +20,7 @@ creo PaginaDeInicio como un componente vue2 con nombre "PaginaDeInicio" con plan
     <p>Este proyecto está en progreso:</p>
     <ul>
         <li>
-            <a href="./paloman-1/homactograma.paloman-1-estatico.baby.js">Versión 1. Paloman estático</a>
+            <a href="./paloman-1/index.html">Versión 1. Paloman estático</a>
         </li>
     </ul>
   </div>
