@@ -20,7 +20,10 @@ creo PaginaDeInicio como un componente vue2 con nombre "PaginaDeInicio" con plan
     <p>Este proyecto está en progreso:</p>
     <ul>
         <li>
-            <a href="./paloman-1/index.html">Versión 1. Paloman estático</a>
+            <a href="./paloman-1/index.html">Versión 1. Paloman estático</a>. Este Paloman todavía no se mueve. Pero tiene la forma y consistencia espacial adecuada para proceder a la siguiente versión.
+        </li>
+        <li>
+            <a href="./paloman-2/index.html">Versión 2. Paloman estático con API propia</a>. Este Paloman tiene ya una clase `Persona` propia. Todavía no se mueve tampoco. Pero ahora podemos crear 2 y 3 personas fácilmente.
         </li>
     </ul>
   </div>

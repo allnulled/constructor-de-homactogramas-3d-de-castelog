@@ -54,4 +54,4 @@ Estas cheat sheets son de soporte para el desarrollo de gráficos 3D:
 
  - De **[Babylon.js JS API](#)** en [BABYLONJS.md](./BABYLONJS.md)
  - De **[Blender GUI](#)** en [BLENDER.md](./BLENDER.md)
- - De **[Blender 3.5.1 Python API](#)** en [BLENDER.md](./BLENDER.md)
+ - De **[Blender 3.5.1 Python API](#)** en [BLENDER.PY.md](./BLENDER.PY.md)
