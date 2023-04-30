@@ -59844,11 +59844,11 @@ Castelog.variables.operador.exclamacion.ejs.ui.dom.elemento = function(elemento 
 
 const PaginaDeInicio = Castelog.metodos.un_componente_vue2("PaginaDeInicio",
   "<div class=\"PaginaDeInicio Component\">"
- + "    <h5>Constructor de homactogramas 3D de Castelog</h5>"
+ + "    <h3>Constructor de homactogramas 3D de Castelog</h3>"
  + "    <p>Este proyecto está en progreso:</p>"
  + "    <ul>"
  + "        <li>"
- + "            <a href=\"./paloman-1/homactograma.paloman-1-estatico.baby.js\">(1) Paloman estático</a>"
+ + "            <a href=\"./paloman-1/homactograma.paloman-1-estatico.baby.js\">Versión 1. Paloman estático</a>"
  + "        </li>"
  + "    </ul>"
  + "  </div>",

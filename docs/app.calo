@@ -16,11 +16,11 @@ importo api nativa.
 
 creo PaginaDeInicio como un componente vue2 con nombre "PaginaDeInicio" con plantilla {
   <div class="PaginaDeInicio Component">
-    <h5>Constructor de homactogramas 3D de Castelog</h5>
+    <h3>Constructor de homactogramas 3D de Castelog</h3>
     <p>Este proyecto está en progreso:</p>
     <ul>
         <li>
-            <a href="./paloman-1/homactograma.paloman-1-estatico.baby.js">(1) Paloman estático</a>
+            <a href="./paloman-1/homactograma.paloman-1-estatico.baby.js">Versión 1. Paloman estático</a>
         </li>
     </ul>
   </div>
