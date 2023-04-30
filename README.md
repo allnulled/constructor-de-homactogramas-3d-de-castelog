@@ -10,7 +10,9 @@ Puedes ir directamente a la versión online a:
 
  - [https://allnulled.github.io/constructor-de-homactogramas-3d-de-castelog](https://allnulled.github.io/constructor-de-homactogramas-3d-de-castelog).
 
-Él es PaloMan.
+## Introducción
+
+Pues él es PaloMan.
 
 ![Imagen_1_del_homactografo](./dev/imagenes/homactografo-3d.1.png)
 
@@ -25,6 +27,10 @@ El estado del proyecto es todavía prematuro. Esta es la progresión:
  - [x] Construir a Paloman con **espacialidad consistente**
     - [x] Donde termina un "hueso" empieza el siguiente
     - [x] Hay una coherencia mínima variabilizada
+ - [x] Construir a Paloman como **instancia de una clase Persona** propia de la API de Paloman 3D.
+   - [x] Que tenga todas las variables locales correctamente aisladas.
+   - [x] Que tenga todas las variables configurales correctamente aisladas y configuradas.
+   - [x] Que pueda sobreescribir fácilmente variables locales y configurales.
  - [ ] Construir a Paloman con **movimiento consistente**
     - [ ] Separar variables de ángulo/movimiento
     - [ ] Introducir efectivamente variables de ángulo en cómputo posicional

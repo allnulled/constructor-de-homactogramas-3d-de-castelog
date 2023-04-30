@@ -747,11 +747,6 @@ const createScene = function () {
         persona3 = new Persona({ z: 2 }, {}, escena, camara, luz);
         persona4 = new Persona({ z: 3 }, {}, escena, camara, luz);
         Object.assign(escenicamente, { persona, persona2, persona3, persona4 });
-        console.log(persona.locales.esfera_de_cabeza.position.z)
-        console.log(persona2.locales.esfera_de_cabeza.position.z)
-        console.log("?", persona2.locales.esfera_de_codo_derecho.position.z)
-        console.log(persona3.locales.esfera_de_cabeza.position.z)
-        console.log(persona4.locales.esfera_de_cabeza.position.z)
     }
     Configuraciones_finales: {
         Configuraciones_de_camara: {
