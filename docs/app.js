@@ -59848,7 +59848,7 @@ const PaginaDeInicio = Castelog.metodos.un_componente_vue2("PaginaDeInicio",
  + "    <p>Este proyecto está en progreso:</p>"
  + "    <ul>"
  + "        <li>"
- + "            <a href=\"homactograma.paloman-1-estatico.baby.js\">(1) Paloman estático</a>"
+ + "            <a href=\"./paloman-1/homactograma.paloman-1-estatico.baby.js\">(1) Paloman estático</a>"
  + "        </li>"
  + "    </ul>"
  + "  </div>",
