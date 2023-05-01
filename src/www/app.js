@@ -59851,10 +59851,16 @@ const PaginaDeInicio = Castelog.metodos.un_componente_vue2("PaginaDeInicio",
  + "            <a href=\"./paloman-1/index.html\">Versión 1. Paloman estático</a>. <b>Obsoleta</b>. Este Paloman todavía no se mueve. Pero tiene la forma y consistencia espacial adecuada para proceder a la siguiente versión."
  + "        </li>"
  + "        <li>"
- + "            <a href=\"./paloman-2/index.html\">Versión 2. Paloman estático con API propia</a>. Este Paloman tiene ya una clase <pre>Persona</pre> propia. Todavía no se mueve tampoco. Pero ahora podemos crear 2 y 3 personas fácilmente. Esta API sí tiene consistencia espacial."
+ + "            <a href=\"./paloman-2/index.html\">Versión 2. Paloman estático con API propia</a>. Este Paloman tiene ya una clase <code>Persona</code> propia. Todavía no se mueve tampoco. Pero ahora podemos crear 2 y 3 personas fácilmente. Esta API sí tiene consistencia espacial."
+ + "        </li>"
+ + "        <li>"
+ + "            <a href=\"./paloman-3/index.html\">Versión 3. Paloman estático con consistencia motriz entre palos</a>. Este Paloman calcula sus posiciones relativamente a sus partes propias. No hay diferencias en la percepción de Paloman, pero ahora, Paloman puede hacer movimiento coherente. En el anterior Paloman, las articulaciones se separarían."
+ + "        </li>"
+ + "        <li>"
+ + "            <a href=\"./paloman-3/index.html\">Versión 4. </a>"
  + "        </li>"
  + "    </ul>"
- + "    <p>Nota: estos ejemplos tienen su correspondiente código fuente dentro del repositorio. De este script, con la aplicación de [playground de Babylon.js](https://playground.babylonjs.com/), se puede generar un fichero `index.html`, que es el que está como ejemplo compartido.</p>"
+ + "    <p>Nota: estos ejemplos tienen su correspondiente código fuente dentro del repositorio. De este script, con la aplicación de <a href=\"https://playground.babylonjs.com\">playground de Babylon.js</a>, se puede generar un fichero <code>index.html</code>, que es el que está como ejemplo compartido.</p>"
  + "  </div>",
   null,
   null);
