@@ -7,3 +7,22 @@
     - [ ] trasladarse
     - [ ] posicionar y
     - [ ] rotar
+
+
+```
+Escena
+Objeto_de_escena
+  + aprender
+  + olvidar
+  + rotar...
+  + posicionar...
+Luz extiende Objeto_de_escena
+  + enfocar_a (setTarget)
+Camara extiende Objeto_de_escena
+  + enfocar_a (setTarget)
+Persona extiende Objeto_de_escena
+  + decir
+  + caminar
+  + ...
+Objeto extiende Objeto_de_escena
+```

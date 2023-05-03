@@ -3,7 +3,30 @@
 Esta documentación es una síntesis priorizada de ésta otra: [https://doc.babylonjs.com/typedoc/modules/BABYLON](https://doc.babylonjs.com/typedoc/modules/BABYLON), que es la [Babylon.js v6.1.0](https://www.npmjs.com/package/babylonjs/v/6.1.0).
 
 
+
+
 ## Acciones y referencias
+
+### Índice
+
+**Documentadas:**
+
+- Establecer fondo de escena
+- Crear objeto `Color3` en sus modalidades
+- Pasar ángulo de grados a radianes
+- Establecer el foco gravitatorio de cámara en `ArcRotateCamera`
+- Establecer rotación alpha y beta y traslación radius de cámara en `ArcRotateCamera`
+- Limitar el radio de movimiento de cámara por un eje a en `ArcRotateCamera`
+- Limitar el radio de movimiento de cámara por un eje b en `ArcRotateCamera`
+- Configurar la sensibilidad del zoom de la rueda del mouse en `ArcRotateCamera`
+
+**No documentadas:**
+
+- 
+
+----
+
+### Contenido
 
 ##### Establecer fondo de escena
 
