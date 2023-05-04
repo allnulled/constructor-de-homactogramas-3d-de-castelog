@@ -1484,6 +1484,24 @@ let createScene = function () {
                     objetos: this.seleccionar_objetos.bind(this),
                     persona: this.seleccionar_persona.bind(this),
                     personas: this.seleccionar_personas.bind(this),
+                    entrar: {
+                        escena: this.crear_escena.bind(this),
+                        camara: this.crear_camara.bind(this),
+                        luz: this.crear_luz.bind(this),
+                        objeto: this.crear_objeto.bind(this),
+                        objeto_esfera: this.crear_objeto_esfera.bind(this),
+                        objeto_suelo: this.crear_objeto_suelo.bind(this),
+                        persona: this.crear_persona.bind(this),
+                        evento_en_bucle: this.activar_accion_en_bucle.bind(this),
+                    },
+                    salir: {
+                        escena: this.eliminar_escena.bind(this),
+                        camara: this.eliminar_camara.bind(this),
+                        luz: this.eliminar_luz.bind(this),
+                        objeto: this.eliminar_objeto.bind(this),
+                        persona: this.eliminar_persona.bind(this),
+                        evento_en_bucle: this.desactivar_accion_en_bucle.bind(this),
+                    }
                 };
             }
 
@@ -1634,24 +1652,42 @@ let createScene = function () {
 
     Script_de_escena: {
         const homactografo = new window.Homactografo(engine, canvas);
-        homactografo.crear_escena("escena_inicial").activarse();
-        homactografo.crear_objeto_esfera("esfera_inicial", "Objeto_esfera_estandar", [{ diameter: 2, segments: 32 }], esfera => { esfera.$mesh.position.y = 1; });
-        homactografo.crear_objeto_suelo("suelo_inicial", "Objeto_suelo_estandar", [{ width: 6, height: 6 }]);
-        homactografo.crear_persona("persona_inicial", "Persona_estandar", [{}, {}, homactografo.escena_actual.$scene]);
-        homactografo.crear_camara("camara_inicial", "Camara_estandar", [], camara => { camara.$camera.setTarget(homactografo.seleccionar_objeto("esfera_inicial").$mesh); });
-        homactografo.crear_camara("camara_perfil");
-        homactografo.crear_camara("camara_frontal");
-        homactografo.crear_luz("luz_inicial");
-        homactografo.seleccionar_camara("camara_inicial").moverse({ x: 5, y: 0, z: 0 });
-        homactografo.seleccionar_objeto("esfera_inicial").moverse({ x: 1.2, y: 0, z: 0 });
-        homactografo.seleccionar_persona("persona_inicial").rotar.eje({ x: 20, y: 0, z: 0 });
-        homactografo.seleccionar_persona("persona_inicial").rotar.eje({ x: 20, y: 0, z: 0 });
-        homactografo.activar_accion_en_bucle("mover esfera inicial", () => {
-            console.log("Intervaling");
-            homactografo.seleccionar_objeto("esfera_inicial").moverse({ x: 0.001, y: 0, z: 0 });
-        });
+        const {
+            entrar,
+            salir,
+            elemento,
+            elementos,
+            escena,
+            escenas,
+            camara,
+            camaras,
+            luz,
+            luces,
+            persona,
+            personas,
+            objeto,
+            objetos,
+        } = homactografo.selectores();
+        Script_de_accion: {
+            entrar.escena("escena_inicial").activarse();
+            entrar.objeto_esfera("esfera_inicial", "Objeto_esfera_estandar", [{ diameter: 2, segments: 32 }], esfera => { esfera.$mesh.position.y = 1; });
+            entrar.objeto_suelo("suelo_inicial", "Objeto_suelo_estandar", [{ width: 6, height: 6 }]);
+            entrar.persona("persona_inicial", "Persona_estandar", [{}, {}, homactografo.escena_actual.$scene]);
+            entrar.camara("camara_inicial", "Camara_estandar", [], camara => { camara.$camera.setTarget(objeto("esfera_inicial").$mesh); });
+            entrar.camara("camara_perfil");
+            entrar.camara("camara_frontal");
+            entrar.luz("luz_inicial");
+            camara("camara_inicial").moverse({ x: 5, y: 0, z: 0 });
+            objeto("esfera_inicial").moverse({ x: 1.2, y: 0, z: 0 });
+            persona("persona_inicial").rotar.eje({ x: 20, y: 0, z: 0 });
+            persona("persona_inicial").rotar.eje({ x: 20, y: 0, z: 0 });
+            entrar.evento_en_bucle("mover esfera inicial", () => {
+                console.log("Intervaling");
+                objeto("esfera_inicial").moverse({ x: 0.001, y: 0, z: 0 });
+            });
+        }
         window.$h = homactografo;
-        return homactografo.seleccionar_escena("escena_inicial").$scene;
+        return escena("escena_inicial").$scene;
     };
 
 };
