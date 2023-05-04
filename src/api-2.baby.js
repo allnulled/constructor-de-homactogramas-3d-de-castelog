@@ -1,86 +1,10 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-        <title>Babylon.js sample code</title>
-
-        <!-- Babylon.js -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
-        <script src="https://assets.babylonjs.com/generated/Assets.js"></script>
-        <script src="https://cdn.babylonjs.com/ammo.js"></script>
-        <script src="https://cdn.babylonjs.com/havok/HavokPhysics_umd.js"></script>
-        <script src="https://cdn.babylonjs.com/cannon.js"></script>
-        <script src="https://cdn.babylonjs.com/Oimo.js"></script>
-        <script src="https://cdn.babylonjs.com/earcut.min.js"></script>
-        <script src="https://cdn.babylonjs.com/babylon.js"></script>
-        <script src="https://cdn.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
-        <script src="https://cdn.babylonjs.com/proceduralTexturesLibrary/babylonjs.proceduralTextures.min.js"></script>
-        <script src="https://cdn.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js"></script>
-        <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.js"></script>
-        <script src="https://cdn.babylonjs.com/serializers/babylonjs.serializers.min.js"></script>
-        <script src="https://cdn.babylonjs.com/gui/babylon.gui.min.js"></script>
-        <script src="https://cdn.babylonjs.com/inspector/babylon.inspector.bundle.js"></script>
-
-        <style>
-            html, body {
-                overflow: hidden;
-                width: 100%;
-                height: 100%;
-                margin: 0;
-                padding: 0;
-            }
-
-            #renderCanvas {
-                width: 100%;
-                height: 100%;
-                touch-action: none;
-            }
-            
-            #canvasZone {
-                width: 100%;
-                height: 100%;
-            }
-        </style>
-    </head>
-<body>
-    <div id="canvasZone"><canvas id="renderCanvas"></canvas></div>
-    <script>
-        var canvas = document.getElementById("renderCanvas");
-
-        var startRenderLoop = function (engine, canvas) {
-            engine.runRenderLoop(function () {
-                if (sceneToRender && sceneToRender.activeCamera) {
-                    sceneToRender.render();
-                }
-            });
-        }
-
-        var engine = null;
-        var scene = null;
-        var sceneToRender = null;
-        var createDefaultEngine = function() { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true,  disableWebGL2Support: false}); };
-        
 let createScene = function () {
     (function () {
         class Utilidades {
-            static filtros_de_traza() {
-                return [
-                    "Persona"
-                ];
-            }
             static tracear(id, argz, ...args) {
-                //return;
-                const filtros_de_traza = this.filtros_de_traza();
-                let pasa_filtros = true;
-                Pasar_filtros:
-                for (let i = 0; i < filtros_de_traza.length; i++) {
-                    const filtro_de_traza = filtros_de_traza[i];
-                    pasa_filtros = id.indexOf(filtro_de_traza) !== -1;
-                    if (pasa_filtros) break Pasar_filtros;
-                }
-                if (!pasa_filtros) return;
-                console.log("[TRACE] " + id, Array.from(argz).length);
+                return;
+                console.log("[TRACE] " + id, Array.from(argz), ...args);
             }
             static extraer_de_parametros(parametros, clave, valor_por_defecto = undefined) {
                 Utilidades.tracear("Utilidades.extraer_de_parametros", arguments, this);
@@ -95,7 +19,6 @@ let createScene = function () {
         }
         class Persona {
             static utilidad_de_aplicar_rotacion(parametros) {
-                Utilidades.tracear("Persona.constructor.utilidad_de_aplicar_rotacion", arguments, this);
                 const { persona, parte, vector, tiempo = 0 } = parametros;
                 const punto_3d = Object.assign({}, { x: 0, y: 0, z: 0 }, vector);
                 persona.locales[parte].rotate(BABYLON.Axis.X, BABYLON.Tools.ToRadians(punto_3d.x), BABYLON.Space.LOCAL);
@@ -108,7 +31,6 @@ let createScene = function () {
                 });
             }
             static utilidad_de_aplicar_posicionamiento(parametros) {
-                Utilidades.tracear("Persona.constructor.utilidad_de_aplicar_posicionamiento", arguments, this);
                 const { persona, parte, vector, tiempo = 0 } = parametros;
                 const punto_3d = Object.assign({}, { x: 0, y: 0, z: 0 }, vector);
                 persona.locales[parte].rotate(BABYLON.Axis.X, BABYLON.Tools.ToRadians(punto_3d.x), BABYLON.Space.LOCAL);
@@ -121,7 +43,6 @@ let createScene = function () {
                 });
             }
             static Extender_con_api_de_movimientos_de_bajo_nivel_de_paloman(persona) {
-                Utilidades.tracear("Persona.constructor.Extender_con_api_de_movimientos_de_bajo_nivel_de_paloman", arguments, this);
                 const factoria = {
                     de_rotar_eje: (persona) => (punto_3d_args, tiempo = 1000) => this.utilidad_de_aplicar_rotacion({ persona, parte: "esfera_de_cabeza", vector: punto_3d_args, duracion: tiempo }),
                     de_rotar_cuello: (persona) => (punto_3d_args, tiempo = 1000) => this.utilidad_de_aplicar_rotacion({ persona, parte: "esfera_de_cuello", vector: punto_3d_args, duracion: tiempo }),
@@ -189,7 +110,6 @@ let createScene = function () {
             }
 
             constructor(posicion, opciones, escena) {
-                Utilidades.tracear("Persona.constructor", arguments, this);
                 this.escena = escena;
                 this.opciones = opciones;
                 this.utilidades = Object.assign({}, this.constructor.utilidades_por_defecto);
@@ -200,12 +120,9 @@ let createScene = function () {
                 this.prepararse();
             }
             prepararse() {
-                Utilidades.tracear("Persona.prepararse", arguments, this);
                 this.constructor.Extender_con_api_de_movimientos_de_bajo_nivel_de_paloman(this);
-                this.componerse();
             }
             static get configuraciones_por_defecto() {
-                Utilidades.tracear("Persona.constructor.configuraciones_por_defecto", arguments, this);
                 const configuralmente = {};
                 // Configuraciones: primera ola.
                 Object.assign(configuralmente, {
@@ -240,11 +157,9 @@ let createScene = function () {
                 return configuralmente;
             }
             static get locales_por_defecto() {
-                Utilidades.tracear("Persona.constructor.locales_por_defecto", arguments, this);
                 return {};
             }
             static get utilidades_por_defecto() {
-                Utilidades.tracear("Persona.constructor.utilidades_por_defecto", arguments, this);
                 const utilmente = {};
                 const { escena } = this;
                 // Utilidades: primera ola.
@@ -280,11 +195,18 @@ let createScene = function () {
                 });
                 return utilmente;
             }
-            componerse() {
+            pintarse() {
+                // Este método en esta API no está pensado para llamarlo como usuario.
+                // En Babylon.js, en principio, delegamos totalmente el control del pintado,
+                // cosa que en la versión de Paloman 2D primera, no ocurre.
+                // Por tanto, no hay llamada al render, sólo se llama a actualizar a los puntos.
+                // Además, este método, en esta API 3D está pensado solo para llamarse 1 vez,
+                // y se hace automáticamente en el constructor.
+                this.moverse();
+            }
+            moverse() {
                 // Este método en esta API no está pensado para llamarlo como usuario.
                 // Es de uso interno, igual que `pintarse`.
-                Utilidades.tracear("Persona.componerse", arguments, this);
-                if (Object.keys(this.locales).length !== 0) return;
                 const { escena } = this;
                 const configuralmente = this.configuraciones;
                 const localmente = this.locales;
@@ -1232,7 +1154,7 @@ let createScene = function () {
         };
         class Escena_estandar {
             constructor(homactografo, id, parametros = {}) {
-                Utilidades.tracear("Escena_estandar.constructor", arguments, this, arguments, this);
+                Utilidades.tracear("Escena_estandar.constructor", arguments, this);
                 this.id = id;
                 this.homactografo = homactografo;
                 this.parametros = parametros;
@@ -1364,10 +1286,7 @@ let createScene = function () {
                 this.homactografo = homactografo;
                 this.id = id;
                 this.parametros = parametros;
-                this.prepararse_para_persona_estandar();
-            }
-            prepararse_para_persona_estandar() {
-
+                this.prepararse();
             }
             moverse(vector_args) {
                 Utilidades.tracear("Objeto_estandar.moverse", arguments, this);
@@ -1447,10 +1366,10 @@ let createScene = function () {
             static ejecutar_inyecciones_en_bucle_de_escena(homactografo, escena_de_homactografo) {
                 Utilidades.tracear("Homactografo.ejecutar_inyecciones_en_bucle_de_escena", arguments, this);
                 const escena_id = typeof escena_de_homactografo === "undefined" ? "*" : escena_de_homactografo.id;
-                if (!(escena_id in homactografo.instancias_de_accion_en_bucle)) {
-                    homactografo.instancias_de_accion_en_bucle[escena_id] = {};
+                if (!(escena_id in homactografo.acciones_en_bucle)) {
+                    homactografo.acciones_en_bucle[escena_id] = {};
                 }
-                const escena_acciones = homactografo.instancias_de_accion_en_bucle[escena_id];
+                const escena_acciones = homactografo.acciones_en_bucle[escena_id];
                 const acciones_ids = Object.keys(escena_acciones);
                 for (let i = 0; i < acciones_ids.length; i++) {
                     const accion_id = acciones_ids[i];
@@ -1468,12 +1387,12 @@ let createScene = function () {
                 this.instancias_de_luz = {};
                 this.instancias_de_persona = {};
                 this.instancias_de_objeto = {};
-                this.instancias_de_accion_en_bucle = {};
                 this.tipos_de_escena = {};
                 this.tipos_de_camara = {};
                 this.tipos_de_luz = {};
                 this.tipos_de_persona = {};
                 this.tipos_de_objeto = {};
+                this.acciones_en_bucle = {};
                 this.metadatos = metadatos;
                 this.prepararse();
             }
@@ -1530,23 +1449,6 @@ let createScene = function () {
                     this.instancias_de_objeto,
                     this.instancias_de_persona
                 );
-            }
-
-            selectores() {
-                return {
-                    elementos: this.seleccionar_por_filtro.bind(this),
-                    elemento: this.seleccionar_por_id.bind(this),
-                    escena: this.seleccionar_escena.bind(this),
-                    escenas: this.seleccionar_escenas.bind(this),
-                    camara: this.seleccionar_camara.bind(this),
-                    camaras: this.seleccionar_camaras.bind(this),
-                    luz: this.seleccionar_luz.bind(this),
-                    luces: this.seleccionar_luces.bind(this),
-                    objeto: this.seleccionar_objeto.bind(this),
-                    objetos: this.seleccionar_objetos.bind(this),
-                    persona: this.seleccionar_persona.bind(this),
-                    personas: this.seleccionar_personas.bind(this),
-                };
             }
 
             registrar_tipo_de_escena(tipo, creador = false) {
@@ -1671,23 +1573,23 @@ let createScene = function () {
             }
 
             activar_accion_en_bucle(id, accion, escena_id = "*") {
-                if (!(escena_id in this.instancias_de_accion_en_bucle)) {
-                    this.instancias_de_accion_en_bucle[escena_id] = {};
+                if (!(escena_id in this.acciones_en_bucle)) {
+                    this.acciones_en_bucle[escena_id] = {};
                 }
-                if (id in this.instancias_de_accion_en_bucle[escena_id]) {
+                if (id in this.acciones_en_bucle[escena_id]) {
                     throw new Error("Error al «activar_accion_en_bucle» porque ya existe una acción «" + id + "» en escena «" + escena_id + "»");
                 }
-                this.instancias_de_accion_en_bucle[escena_id][id] = { id, accion, escena_id };
+                this.acciones_en_bucle[escena_id][id] = { id, accion, escena_id };
                 return this;
             }
             desactivar_accion_en_bucle(id, escena_id = "*") {
-                if (!(escena_id in this.instancias_de_accion_en_bucle)) {
-                    this.instancias_de_accion_en_bucle[escena_id] = {};
+                if (!(escena_id in this.acciones_en_bucle)) {
+                    this.acciones_en_bucle[escena_id] = {};
                 }
-                if (!(id in this.instancias_de_accion_en_bucle[escena_id])) {
-                    this.instancias_de_accion_en_bucle[escena_id] = {};
+                if (!(id in this.acciones_en_bucle[escena_id])) {
+                    this.acciones_en_bucle[escena_id] = {};
                 }
-                delete this.instancias_de_accion_en_bucle[escena_id][id];
+                delete this.acciones_en_bucle[escena_id][id];
                 return this;
             }
         };
@@ -1699,48 +1601,19 @@ let createScene = function () {
         homactografo.crear_escena("escena_inicial").activarse();
         homactografo.crear_objeto_esfera("esfera_inicial", "Objeto_esfera_estandar", [{ diameter: 2, segments: 32 }], esfera => { esfera.$mesh.position.y = 1; });
         homactografo.crear_objeto_suelo("suelo_inicial", "Objeto_suelo_estandar", [{ width: 6, height: 6 }]);
-        homactografo.crear_persona("persona_inicial", "Persona_estandar", [{}, {}, homactografo.escena_actual.$scene]);
+        homactografo.crear_persona("persona_inicial", "Persona_estandar", [{},{},homactografo.escena_actual.$scene]);
         homactografo.crear_camara("camara_inicial", "Camara_estandar", [], camara => { camara.$camera.setTarget(homactografo.seleccionar_objeto("esfera_inicial").$mesh); });
         homactografo.crear_camara("camara_perfil");
         homactografo.crear_camara("camara_frontal");
         homactografo.crear_luz("luz_inicial");
         homactografo.seleccionar_camara("camara_inicial").moverse({ x: 5, y: 0, z: 0 });
         homactografo.seleccionar_objeto("esfera_inicial").moverse({ x: 1.2, y: 0, z: 0 });
-        homactografo.seleccionar_persona("persona_inicial").rotar.eje({ x: 20, y: 0, z: 0 });
-        homactografo.seleccionar_persona("persona_inicial").rotar.eje({ x: 20, y: 0, z: 0 });
         homactografo.activar_accion_en_bucle("mover esfera inicial", () => {
             console.log("Intervaling");
-            homactografo.seleccionar_objeto("esfera_inicial").moverse({ x: 0.001, y: 0, z: 0 });
+            homactografo.seleccionar_objeto("esfera_inicial").moverse({ x: 0.01, y: 0, z: 0 });
         });
         window.$h = homactografo;
         return homactografo.seleccionar_escena("escena_inicial").$scene;
     };
 
 };
-                window.initFunction = async function() {
-                    
-                    
-                    
-                    var asyncEngineCreation = async function() {
-                        try {
-                        return createDefaultEngine();
-                        } catch(e) {
-                        console.log("the available createEngine function failed. Creating the default engine instead");
-                        return createDefaultEngine();
-                        }
-                    }
-
-                    window.engine = await asyncEngineCreation();
-        if (!engine) throw 'engine should not be null.';
-        startRenderLoop(engine, canvas);
-        window.scene = createScene();};
-        initFunction().then(() => {sceneToRender = scene                    
-        });
-
-        // Resize
-        window.addEventListener("resize", function () {
-            engine.resize();
-        });
-    </script>
-</body>
-</html>

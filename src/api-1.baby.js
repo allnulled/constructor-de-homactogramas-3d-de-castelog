@@ -13,6 +13,7 @@ let createScene = function () {
                 return parametro ? parametro : valor_por_defecto;
             }
             static extraer_como_vector(arg) {
+                Utilidades.tracear("Utilidades.extraer_como_vector", arguments, this);
                 return Object.assign({}, { x: 0, y: 0, z: 0 }, arg);
             }
         }
