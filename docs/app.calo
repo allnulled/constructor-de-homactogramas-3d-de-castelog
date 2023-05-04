@@ -15,7 +15,7 @@ Ejecutable como documento HTML5
 importo api nativa.
 
 creo PaginaDeInicio como un componente vue2 con nombre "PaginaDeInicio" con plantilla {
-  <div class="PaginaDeInicio Component">
+  <div class="PaginaDeInicio Component win7">
     <h3>Constructor de homactogramas 3D de Castelog</h3>
     <p>Este proyecto está en progreso, y todas estas versiones son temporales y ninguna válida todavía:</p>
     <ul>
@@ -39,6 +39,12 @@ creo PaginaDeInicio como un componente vue2 con nombre "PaginaDeInicio" con plan
         </li>
         <li>
             <a href="./paloman-6/index.html">Versión 6. Paloman con inicializador integrado en la API</a>. Desde este punto, nos emancipamos del `BabylonJS Playground` que tan bien nos iba para copiar-pegar scripts, para tomar el control desde el inicio de la API de BabylonJS. Ahora, el motor lo generaremos nosotros, y la creación de la escena también correrá por nuestra cuenta. La ventaja de esto es que podremos abstraer el proceso de despliegue (que en `BabylonJS Playground` no) y así podremos integrar servidores, generadores, recursos multimedia y otras utilidades, o poder iniciar un desarrollo de paquete NPM con una API que envuelva totalmente a BabylonJS.
+        </li>
+        <li>
+            <a href="./paloman-7/index.1.html">Versión 7. Albores del API del Homactógrafo 3D de Castelog</a>. Ya se muestra una caja de texto y se pueden inyectar scripts en Castelog. El Homactógrafo ya oculta en un despliegue básico a BabylonJS. La API empieza a consolidarse en: `Homactógrafo 3D de Castelog = BabylonJS + Vue2 + Castelog`.
+        </li>
+        <li>
+            <a href="./paloman-8/index.1.html">Versión 8. Ejemplo retomado del 2D en 3D (no todavía)</a>. Todo esto hemos tenido que hacer para replicar el mismo ejemplo del homactógrafo 2D de Castelog, para conseguir hacerlo en 3D. Varias semanas han sido, de forma autodidacta. OK. Pues ahora, matemáticos, ingenieros, peña preparadísima, peñíta financiada, en grupo, papers científicos, tal. ¿Hasta dónde pueden llegar ellos? Yo digo que hasta meterme a mí en una mentira ontológico-existencial. Y caro, contráteme, señor Mr. Smith. No va. Peñita. Seguiremos. Pero en estado de alerta ontológico-existencial. Yo soy un mindis. Un pro te mete texturas realistas de personas de verdad. Metaverso ni metaverso. La del telediario igual está hecha con esto. Seguro, seguramente.
         </li>
     </ul>
     <p>Nota: estos ejemplos tienen su correspondiente código fuente dentro del repositorio. De este script, con la aplicación de <a href="https://playground.babylonjs.com">playground de Babylon.js</a>, se puede generar un fichero <code>index.html</code>, que es el que está como ejemplo compartido.</p>
