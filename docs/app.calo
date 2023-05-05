@@ -44,7 +44,31 @@ creo PaginaDeInicio como un componente vue2 con nombre "PaginaDeInicio" con plan
             <a href="./paloman-7/index.1.html">Versión 7. Albores del API del Homactógrafo 3D de Castelog</a>. Ya se muestra una caja de texto y se pueden inyectar scripts en Castelog. El Homactógrafo ya oculta en un despliegue básico a BabylonJS. La API empieza a consolidarse en: `Homactógrafo 3D de Castelog = BabylonJS + Vue2 + Castelog`.
         </li>
         <li>
-            <a href="./paloman-8/index.1.html">Versión 8. Ejemplo retomado del 2D en 3D (no todavía)</a>. Todo esto hemos tenido que hacer para replicar el mismo ejemplo del homactógrafo 2D de Castelog, para conseguir hacerlo en 3D. Varias semanas han sido, de forma autodidacta. OK. Pues ahora, matemáticos, ingenieros, peña preparadísima, peñíta financiada, en grupo, papers científicos, tal. ¿Hasta dónde pueden llegar ellos? Yo digo que hasta meterme a mí en una mentira ontológico-existencial. Y caro, contráteme, señor Mr. Smith. No va. Peñita. Seguiremos. Pero en estado de alerta ontológico-existencial. Yo soy un mindis. Un pro te mete texturas realistas de personas de verdad. Metaverso ni metaverso. La del telediario igual está hecha con esto. Seguro, seguramente.
+            <a href="./paloman-8/index.1.html">Versión 8. Ejemplo retomado del 2D en 3D</a>. Todo esto hemos tenido que hacer para replicar el mismo ejemplo del homactógrafo 2D de Castelog, para conseguir hacerlo en 3D. Varias semanas han sido, de forma autodidacta. OK. Pues ahora, matemáticos, ingenieros, peña preparadísima, peñíta financiada, en grupo, papers científicos, tal. ¿Hasta dónde pueden llegar ellos? Yo digo que hasta meterme a mí en una mentira ontológico-existencial. Y caro, contráteme, señor Mr. Smith. No va. Peñita. Seguiremos. Pero en estado de alerta ontológico-existencial. Yo soy un mindis. Un pro te mete texturas realistas de personas de verdad. Metaverso ni metaverso. La del telediario igual está hecha con esto. Seguro, seguramente.
+        </li>
+        <li>
+            <p>En las siguientes versiones, queremos dar un soporte básico para formatos de imagen, vídeo y sonido, que ya teníamos en HTML.</p>
+        </li>
+        <li>
+            <a href="./paloman-9/index.1.html">Versión 9. Textura de imagen</a>. En esta versión se introduce en la API del Homactógrafo soporte para establecer texturas básicas en las formas geométricas. La API ya hace un uso básico de imágenes aplicadas a texturas. Puede poner imágenes en objetos y en la escena.
+        </li>
+        <li>
+            <a href="./paloman-10/index.1.html">Versión 10. Vídeos de textura (no todavía)</a>. Se puede crear un plano y proyectar un vídeo mp4 con la API. También sobre una geometría.
+        </li>
+        <li>
+            <a href="./paloman-11/index.1.html">Versión 11. Fondo de escena (no todavía)</a>. Ahora no solo las geometrías pueden tener textura, sino que la escena permite imágenes de 360º para usar de fondo.
+        </li>
+        <li>
+            <a href="./paloman-12/index.1.html">Versión 12. Sonidos (no todavía)</a>. La API también permite iniciar y parar sonidos.
+        </li>
+        <li>
+            <p>En otro grupo, tenemos otras tareas.</p>
+        </li>
+        <li>
+            <a href="./paloman-13/index.1.html">Versión 13. Movimiento (no todavía)</a>. 
+        </li>
+        <li>
+            <a href="./paloman-14/index.1.html">Versión 14. Colisiones (no todavía)</a>.
         </li>
     </ul>
     <p>Nota: estos ejemplos tienen su correspondiente código fuente dentro del repositorio. De este script, con la aplicación de <a href="https://playground.babylonjs.com">playground de Babylon.js</a>, se puede generar un fichero <code>index.html</code>, que es el que está como ejemplo compartido.</p>
