@@ -1,0 +1,199 @@
+Ejecutable como documento HTML5
+    con autor allnulled
+    con nombre index
+    con versión 1
+<head>
+    <title>🧍‍♂️ Homactogramas 3D de Calo</title>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .canvas_box {
+        width: 100%;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+      .w_100 { width: 100%; }
+      textarea,
+      pre {
+        -moz-tab-size : 2;
+        -o-tab-size : 2;
+        tab-size : 2;
+      }
+    </style>
+    <script src="./babylonjs.setup.js"></script>
+    <script src="./calo.js"></script>
+    <script src="./castelog-parser.js"></script>
+    <script src="./homactografo.js"></script>
+</head>
+<body class="win7">
+  <div style="padding:4px;">
+    <div class="window">
+      <div class="title-bar">
+        <div class="title-bar-text">
+          ✨ Homactógrafo 3D de Castelog ✨
+        </div>
+      </div>
+      <div class="window-body" style="overflow-y: hide;">
+        <div style="overflow-y: scroll;background-color: #222;box-shadow: 0 0 4px black;">
+          <div class="canvas_box">
+            <canvas id="canvas_for_demo" class="w_100"></canvas>
+          </div>
+        </div>
+        <div id="app"></div>
+      </div>
+    </div>
+  </div>
+</body>.
+
+creo ConstructorDeHomactogramas3dDeCastelog como un componente vue2 con nombre "ConstructorDeHomactogramas3dDeCastelog" con plantilla {
+  <div class="ConstructorDeHomactogramas3dDeCastelog Component win7">
+    <div class="editor_box">
+      <div v-if="exito_de_compilacion">
+        <span>✔ La compilación fue exitosa.</span>
+        <details>
+          <summary>Mostrar código</summary>
+          <div>
+            <textarea class="w_100" style="min-height: 300px;" disabled="true" :value="codigo_actual_js"></textarea>
+          </div>
+        </details>
+      </div>
+      <div v-if="exito_de_ejecucion">
+        <span>✔ La ejecución fue exitosa.</span>
+        <pre>{{ JSON.stringify(exito_de_ejecucion, null, 2) }}</pre>
+      </div>
+      <div v-if="error">
+        <span>✘ Error: {{ error.message }}</span>
+      </div>
+      <div style="position: relative;">
+        <textarea style="font-family: monospace; font-size: 9px; resize: vertical; min-height: 900px;" class="w_100" v-model="codigo_actual"></textarea>
+        <div style="position: absolute; top: 5px; right: 5px; left: auto; bottom: auto;">
+          <button style="opacity: 0.8;" v-on:click="() => compilar(true)">Compilar</button>
+          <button style="opacity: 0.8;" v-on:click="() => aplicar()">Aplicar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+} con lógica {
+  retorno {
+    método data donde {
+      retorno {
+        codigo_actual_js: "",
+        codigo_actual: un código en texto donde {
+hago entrar.escena("Escena_inicial").establecer_color("#66b7d8").activarse().
+hago entrar.objeto_esfera("Esfera_inicial").
+hago entrar.objeto_suelo("Suelo_inicial").establecer_color("#00ba41").
+hago entrar.persona("Protagonista").
+hago entrar.camara("Principal").
+hago entrar.camara("Principal de perfil").
+hago entrar.camara("Principal de frontal").
+hago entrar.luz("Luz inicial 1").
+hago camara("Principal").moverse({ x: 5, y: 0, z: 0 }).
+hago objeto("Esfera_inicial").moverse({ x: 1.2, y: 0, z: 0 }).
+hago persona("Protagonista").rotar.eje({ x: 20, y: 0, z: 0 }).
+hago persona("Protagonista").rotar.eje({ x: 20, y: 0, z: 0 }).
+hago entrar.evento_en_bucle("Modificar esfera inicial", una lambda con () donde hago objeto("Esfera_inicial").moverse({ x: 0.001, y: 0, z: 0 })).
+retorno escena("Escena_inicial").$scene.
+}.trim(),
+        exito_de_ejecucion: undefined,
+        exito_de_compilacion: undefined,
+        error: undefined
+      }.
+    }.
+    propiedad methods como {
+      mostrar_exito_de_ejecucion: una función con (resultado) donde {
+        asigno this.error como undefined.
+        asigno this.exito_de_compilacion como undefined.
+        asigno this.exito_de_ejecucion como resultado.
+        asigno this.exito_de_ejecucion_timeout_id como setTimeout(una lambda donde asigno this.exito_de_ejecucion como undefined después hago this.$forceUpdate(true), 1000 * 10).
+        hago this.$forceUpdate(true).
+      },
+      mostrar_exito_de_compilacion: una función con () donde {
+        asigno this.error como undefined.
+        asigno this.exito_de_ejecucion como undefined.
+        asigno this.exito_de_compilacion como true.
+        asigno this.exito_timeout_id como setTimeout(una lambda donde asigno this.exito_de_compilacion como undefined después hago this.$forceUpdate(true), 1000 * 10).
+        hago this.$forceUpdate(true).
+      },
+      mostrar_error: una función con (error) donde {
+        imprimo error.
+        asigno this.exito_de_ejecucion como undefined.
+        asigno this.exito_de_compilacion como undefined.
+        asigno this.error como error.
+        asigno this.error_timeout_id como setTimeout(una lambda donde asigno this.error como undefined después hago this.$forceUpdate(true), 1000 * 10).
+        hago this.$forceUpdate(true).
+      },
+      compilar: una función con (mostrar_exito) donde {
+        creo codigo_calo como this.codigo_actual.
+        creo codigo_js como Castelog_parser.parse(codigo_calo).
+        creo homactografo como this.$window.homactografo3d.
+        creo codigo_temporal como `((homactografo, componente) => homactografo.representar(function async () { try { const {entrar,salir,elemento,elementos,escena,escenas,camara,camaras,luz,luces,persona,personas,objeto,objetos} = homactografo.selectores(); ${codigo_js} } catch(error) { componente.mostrar_error(error); } }))`.
+        creo codigo_js_final como codigo_temporal.
+        asigno this.codigo_actual_js como codigo_js_final.
+        si mostrar_exito {
+          hago this.mostrar_exito_de_compilacion().
+        }.
+        retorno codigo_js_final.
+      } en errores hago this.mostrar_error(error),
+      aplicar: una función asíncrona donde {
+        creo homactografo como this.$window.homactografo3d.
+        creo codigo_js como this.compilar().
+        creo funcion_js como asíncronamente this.$window.eval(codigo_js).
+        creo resultado como asíncronamente funcion_js(homactografo, this).
+        si resultado no es tipo indefinido {
+          hago this.mostrar_exito_de_ejecucion(resultado).
+        }.
+      } en errores hago this.mostrar_error(error)
+    }.
+    método mounted donde {
+      si this.$window.Homactografo3D es tipo indefinido lanzo un nuevo Error("El Homactógrafo 3D de Castelog requiere tener cargada el «window.Homactografo3D» para funcionar").
+      creo homactografo como un nuevo this.$window.Homactografo3D(document.getElementById("canvas_for_demo")).
+      asigno this.$window.homactografo3d como homactografo.
+      asigno this.homactografo3d como homactografo.
+      hago this.aplicar().
+      retorno.
+      hago setTimeout(una lambda donde hago this.$window.homactografo3d.pantalla.pintarse(), 1000).
+      creo scripts_de_ejemplo como [
+        "./js/homactogramas/kit.js"
+      ].
+      desde 0 hasta scripts_de_ejemplo.length {
+        creo script_url como scripts_de_ejemplo[index].
+        creo script_tag como document.createElement("script").
+        asigno script_tag.src como script_url.
+        hago document.body.append(script_tag).
+      }.
+    } en errores hago this.mostrar_error(error).
+  }.
+}.
+
+creo App como una aplicación vue2 con nombre "App" con rutas [{
+    propiedad path como "/".
+    propiedad name como "Home".
+    propiedad component como ConstructorDeHomactogramas3dDeCastelog.
+    propiedad props como {}.
+}] con traducciones {
+    propiedad es como {}.
+    propiedad en como {}.
+    propiedad ca como {}.
+} con plantilla {
+  <div class="App Component Castelog-app">
+    <router-view></router-view>
+  </div>
+} con estilos {
+    html {}
+    body {}
+    .Component {}
+    .App {}
+} con lógica {
+  retorno {
+    método data donde {
+      retorno {
+        
+      }.
+    }.
+    propiedad methods como {}.
+    propiedad watch como {}.
+    método beforeMount donde {}.
+    método mounted donde {}.
+  }.
+} montada en "#app".
