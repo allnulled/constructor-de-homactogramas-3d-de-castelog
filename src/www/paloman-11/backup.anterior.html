@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Babylon.js sample code</title>
+    <!-- Babylon.js -->
+    <script src="./babylonjs.setup.js"></script>
+    <script src="./homactografo.js"></script>
+    <link rel="stylesheet" href="./estilos.css" />
+</head>
+<body>
+    <div id="canvasZone"><canvas id="renderCanvas"></canvas></div>
+    <script>
+
+    Script_de_escena: {
+        const homactografo = new window.Homactografo(document.getElementById("renderCanvas"));
+        homactografo.representar(async function () {
+            const {
+                entrar,
+                salir,
+                elemento,
+                elementos,
+                escena,
+                escenas,
+                camara,
+                camaras,
+                luz,
+                luces,
+                persona,
+                personas,
+                objeto,
+                objetos,
+            } = this.selectores();
+            entrar.escena("escena_inicial").activarse();
+            entrar.objeto_esfera("esfera_inicial", "Objeto_esfera_estandar", [{ diameter: 2, segments: 32 }], esfera => { esfera.$mesh.position.y = 1; });
+            entrar.objeto_suelo("suelo_inicial", "Objeto_suelo_estandar", [{ width: 6, height: 6 }]);
+            entrar.persona("persona_inicial", "Persona_estandar", [{}, {}, this.escena_actual.$scene]);
+            entrar.camara("camara_inicial", "Camara_estandar", [], camara => { camara.$camera.setTarget(objeto("esfera_inicial").$mesh); });
+            entrar.camara("camara_perfil");
+            entrar.camara("camara_frontal");
+            entrar.luz("luz_inicial");
+            camara("camara_inicial").moverse({ x: 5, y: 0, z: 0 });
+            objeto("esfera_inicial").moverse({ x: 1.2, y: 0, z: 0 });
+            persona("persona_inicial").rotar.eje({ x: 20, y: 0, z: 0 });
+            persona("persona_inicial").rotar.eje({ x: 20, y: 0, z: 0 });
+            entrar.evento_en_bucle("mover esfera inicial", () => {
+                objeto("esfera_inicial").moverse({ x: 0.001, y: 0, z: 0 });
+            });
+            window.$h = this;
+            return escena("escena_inicial").$scene;
+        });
+    };
+
+    </script>
+</body>
+
+</html>
