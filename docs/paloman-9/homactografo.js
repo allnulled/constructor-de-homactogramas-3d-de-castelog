@@ -107,7 +107,7 @@
             return this;
         }
         establecer_color(color) {
-            Utilidades.tracear("Objeto_cara_estandar.establecer_color", arguments, this);
+            Utilidades.tracear("Objeto_estandar.establecer_color", arguments, this);
             if (!this.$mesh.material) {
                 this.$mesh.material = new BABYLON.StandardMaterial("", this.homactografo.escena_actual.$scene);
             }
@@ -118,23 +118,32 @@
             return this;
         }
         establecer_textura(imagen, parametros = {}) {
-            Utilidades.tracear("Objeto_cara_estandar.establecer_color", arguments, this);
+            Utilidades.tracear("Objeto_estandar.establecer_color", arguments, this);
             if (!this.$mesh.material) {
                 this.$mesh.material = new BABYLON.StandardMaterial("", this.homactografo.escena_actual.$scene);
             }
             this.$mesh.material.diffuseTexture = new BABYLON.Texture(imagen, this.homactografo.escena_actual.$scene);
             return this;
         }
+        establecer_textura_de_video(video, parametros = {}) {
+            Utilidades.tracear("Objeto_estandar.establecer_textura_de_video", arguments, this);
+            if (!this.$mesh.material) {
+                this.$mesh.material = new BABYLON.StandardMaterial("", this.homactografo.escena_actual.$scene);
+            }
+            this.$mesh.material.emissiveColor = new BABYLON.Color3(1, 1, 1);
+            this.$mesh.material.diffuseTexture = new BABYLON.VideoTexture("", video, this.homactografo.escena_actual.$scene, true);
+            return this;
+        }
     }
 
-    class Objeto_cara_estandar extends Objeto_estandar {
+    class Objeto_plano_estandar extends Objeto_estandar {
         constructor(homactografo, id, parametros = {}) {
             super(homactografo, id, parametros);
-            Utilidades.tracear("Objeto_cara_estandar.constructor", arguments, this);
+            Utilidades.tracear("Objeto_plano_estandar.constructor", arguments, this);
             this.prepararse();
         }
         prepararse() {
-            Utilidades.tracear("Objeto_cara_estandar.prepararse", arguments, this);
+            Utilidades.tracear("Objeto_plano_estandar.prepararse", arguments, this);
             this.$mesh = BABYLON.MeshBuilder.CreatePlane(this.id, {
                 width: 6,
                 height: 6

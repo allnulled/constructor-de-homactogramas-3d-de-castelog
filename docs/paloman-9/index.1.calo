@@ -81,7 +81,7 @@ creo ConstructorDeHomactogramas3dDeCastelog como un componente vue2 con nombre "
         codigo_actual_js: "",
         codigo_actual: un código en texto donde {
 hago entrar.escena("Escena_inicial").activarse().
-hago entrar.objeto_esfera("Esfera_inicial").
+hago entrar.objeto_esfera("Esfera_inicial").establecer_textura_de_video("../recursos/videos/gatitos.mp4").
 hago entrar.objeto_suelo("Suelo_inicial").establecer_color("#00ba41").
 hago entrar.persona("Protagonista").
 hago entrar.camara("Principal normal").enfocarse_a(objeto("Esfera_inicial")).
