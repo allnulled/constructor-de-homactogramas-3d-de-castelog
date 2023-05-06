@@ -80,7 +80,7 @@ creo ConstructorDeHomactogramas3dDeCastelog como un componente vue2 con nombre "
       retorno {
         codigo_actual_js: "",
         codigo_actual: un código en texto donde {
-hago entrar.escena("Escena_inicial").establecer_fondo_panoramico("../recursos/hdri/carretera/carretera.hdr").activarse().
+hago entrar.escena("Escena_inicial").activarse().
 hago entrar.objeto_esfera("Esfera_inicial").establecer_textura_de_video("../recursos/videos/gatitos.mp4").
 hago entrar.objeto_suelo("Suelo_inicial").establecer_color("#00ba41").
 hago entrar.persona("Protagonista").
@@ -88,7 +88,8 @@ hago entrar.camara("Principal normal").enfocarse_a(objeto("Esfera_inicial")).
 hago entrar.camara("Principal de perfil 1").moverse({z:0+45}).
 hago entrar.camara("Principal de perfil 2").moverse({z:0-45}).activarse().
 hago entrar.luz("Luz inicial 1").
-hago escena("Escena_inicial").establecer_fondo_fijo("../recursos/imagenes/nubes2.jpg").
+### hago escena("Escena_inicial").establecer_fondo_fijo("../recursos/imagenes/nubes2.jpg").
+hago escena("Escena_inicial").establecer_fondo_panoramico("../recursos/hdri/carretera/carretera.env").
 hago camara("Principal normal").moverse({ x: 5, y: 0, z: 0 }).
 hago objeto("Esfera_inicial").moverse({ x: 1.2, y: 0, z: 0 }).
 hago objeto("Suelo_inicial").establecer_textura("../recursos/texture/cesped/cesped1.jpeg").

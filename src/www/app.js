@@ -57750,7 +57750,7 @@ const PaginaDeInicio = Castelog.metodos.un_componente_vue2("PaginaDeInicio",
  + "            <a href=\"./paloman-9/index.1.html\">Versión 9. Textura de imagen y vídeo</a>. En esta versión se introduce en la API del Homactógrafo soporte para establecer texturas de imagen y de vídeo básicas en las formas geométricas. La escena también soporta una imagen simple de fondo."
  + "        </li>"
  + "        <li>"
- + "            <a href=\"./paloman-10/index.1.html\">Versión 10. Fondo de escena (no todavía)</a>. Ahora no solo las geometrías pueden tener textura, sino que la escena permite imágenes de 360º para usar de fondo."
+ + "            <a href=\"./paloman-10/index.1.html\">Versión 10. Fondo de escena</a>. Las escenas pueden ahora usar una implementación de fondo panorámico."
  + "        </li>"
  + "        <li>"
  + "            <a href=\"./paloman-11/index.1.html\">Versión 11. Sonidos (no todavía)</a>. La API también permite iniciar y parar sonidos."

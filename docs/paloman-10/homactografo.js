@@ -6,7 +6,7 @@
     class Utilidades {
         static filtros_de_traza() {
             return [
-                // "Persona"
+                "Persona"
             ];
         }
         static tracear(id, argz, ...args) {
@@ -81,8 +81,18 @@
         }
         establecer_fondo_panoramico(imagen_de_rango_dinamico) {
             Utilidades.tracear("Escena_estandar.establecer_fondo_panoramico", arguments, this);
-            //  @TODO...
-            imagen_de_rango_dinamico
+            if(imagen_de_rango_dinamico.endsWith(".env")) {
+                const skybox = BABYLON.MeshBuilder.CreateBox("", { size: 5000.0 }, this.$scene);
+                const skyboxMaterial = new BABYLON.StandardMaterial("", this.$scene);
+                skyboxMaterial.backFaceCulling = false;
+                skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture(imagen_de_rango_dinamico, this.$scene);
+                skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
+                skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
+                skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
+                skybox.material = skyboxMaterial;
+            } else {
+                throw new Error("El método «establecer_fondo_panoramico» solo permite formatos de fichero «*.env» por el momento");
+            }
             return this;
         }
     }
