@@ -24,7 +24,7 @@ La idea es hacer scripts con Castelog para representar escenas de cine. Más ade
 
 Pero ¿realmente? Es una interfaz para interactuar con [Babylon.js](#) y el [HTML5 Canvas API](#) pero mediante Castelog, lo cual naturaliza esta expresividad bastante, sin perder la potencia de la programación con JavaScript. Es muy guay, es demasiado guay para que no tenga porros, yo no soy comercial, yo no soy empresario, yo solo programo, y solo pido porros, dejémoslo, eres el Diablo, y me quieres hacer sufrir. No puedo continuar desarrollando. Y no quiero volver a sentir que me lo das y me lo quitas. Si sois extraterrestres, sois odiosos. Y si eres el Diablo, eres odioso. Y si sois los humanos, sois odiosos. No sé quién ni qué, pero eres odioso.
 
-No puedo seguir desarrollando. Otra vez síndrome de abstinencia por pobre. No lo voy a soportar, puta raza política.
+No puedo seguir desarrollando. Otra vez síndrome de abstinencia por pobre. No lo voy a soportar, puta raza política, encubridora de mafiosos asquerosos metafísicos enfermos mentales odiosos.
 
 ## Referencia oficial de la API del Homactógrafo 3D de Castelog
 
